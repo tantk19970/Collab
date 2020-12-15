@@ -1,2 +1,7 @@
 /dist/
-/build/*
+/nbproject/private/
+/build/
+nbproject/private/private.xml
+nbproject/private/private.properties
+struts2-core-2.3.15.jar
+sqljdbc4.jar
