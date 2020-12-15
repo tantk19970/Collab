@@ -12,51 +12,44 @@ import java.io.Serializable;
  * @author Admin
  */
 public class SubjectDTO implements Serializable{
-    private String subID,subName,mayorID,mayorName;
-//    "Select \n" +
-//"From tbl_Subject s,tbl_Major m where s.MajorID=m.MajorID"
+    private Integer subjectId;
+    private String subjectName;
 
     public SubjectDTO() {
     }
 
-    public SubjectDTO(String subID, String subName, String mayorID) {
-        this.subID = subID;
-        this.subName = subName;
-        this.mayorID = mayorID;
+    public SubjectDTO(Integer subjectId, String subjectName) {
+        this.subjectId = subjectId;
+        this.subjectName = subjectName;
     }
 
-    public String getSubID() {
-        return subID;
+    /**
+     * @return the subjectId
+     */
+    public Integer getSubjectId() {
+        return subjectId;
     }
 
-    public void setSubID(String subID) {
-        this.subID = subID;
+    /**
+     * @param subjectId the subjectId to set
+     */
+    public void setSubjectId(Integer subjectId) {
+        this.subjectId = subjectId;
     }
 
-    public String getSubName() {
-        return subName;
+    /**
+     * @return the subjectName
+     */
+    public String getSubjectName() {
+        return subjectName;
     }
 
-    public void setSubName(String subName) {
-        this.subName = subName;
+    /**
+     * @param subjectName the subjectName to set
+     */
+    public void setSubjectName(String subjectName) {
+        this.subjectName = subjectName;
     }
-
-    public String getMayorID() {
-        return mayorID;
-    }
-
-    public void setMayorID(String mayorID) {
-        this.mayorID = mayorID;
-    }
-
-    public String getMayorName() {
-        return mayorName;
-    }
-
-    public void setMayorName(String mayorName) {
-        this.mayorName = mayorName;
-    }
-    
     
     
 }

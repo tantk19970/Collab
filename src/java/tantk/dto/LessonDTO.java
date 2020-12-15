@@ -10,6 +10,6 @@ package tantk.dto;
  * @author Admin
  */
 public class LessonDTO {
-    private String 
+//    private String 
     
 }

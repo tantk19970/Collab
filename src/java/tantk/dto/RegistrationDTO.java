@@ -12,17 +12,16 @@ import java.io.Serializable;
  * @author Admin
  */
 public class RegistrationDTO implements Serializable{
-    private String username,fullname,role,major,year;
+    private String username,fullname,role,major;
 
     public RegistrationDTO() {
     }
 
-    public RegistrationDTO(String username, String fullname, String role, String major, String year) {
+    public RegistrationDTO(String username, String fullname, String role, String major) {
         this.username = username;
         this.fullname = fullname;
         this.role = role;
         this.major = major;
-        this.year = year;
     }
 
     public String getUsername() {
@@ -56,14 +55,4 @@ public class RegistrationDTO implements Serializable{
     public void setMajor(String major) {
         this.major = major;
     }
-
-    public String getYear() {
-        return year;
-    }
-
-    public void setYear(String year) {
-        this.year = year;
-    }
-    
-    
 }

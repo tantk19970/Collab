@@ -36,9 +36,9 @@ public class FirstShopAction extends HttpServlet{
             String shopping;
             ServletContext context=getServletContext();
             type= request.getParameter("shopType");
-            if(type.equals("shopSub"){
-                
-            }
+//            if(type.equals("shopSub"){
+//                
+//            }
             
         }
     }
