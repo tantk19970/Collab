@@ -14,10 +14,10 @@
         <action name="SearchAction" class="tantk.actions.SearchAction">
             <result name="success">admin.jsp</result>
         </action>
-        <action name="CreateSubjectAction" class="tantk.actions.CreateSubjectAction">
+        <action name="CreateSubjectAction" class="tantk.actions.subject.CreateSubjectAction">
             <result name="success">admin.jsp</result>
         </action>
-        <action name="GetAllSubjectAction" class="tantk.actions.GetAllSubjectAction">
+        <action name="GetAllSubjectAction" class="tantk.actions.subject.GetAllSubjectAction">
             <result name="success">admin.jsp</result>
         </action>
     </package>

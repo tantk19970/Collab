@@ -16,7 +16,7 @@ import java.sql.SQLException;
 public class DBUtils {
         private final static String connString ="jdbc:sqlserver://localhost:1433;databaseName=Collab";
     private final static String dbuser="sa";
-    private final static String dbpass="Thonglypatra1998";
+    private final static String dbpass="TheChosenOne";
     private final static String forName="com.microsoft.sqlserver.jdbc.SQLServerDriver";
     
     public static Connection getConnection() throws ClassNotFoundException, SQLException {

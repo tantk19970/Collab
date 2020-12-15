@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tantk.actions;
+package tantk.actions.subject;
 
 import com.opensymphony.xwork2.ActionSupport;
 import java.util.List;

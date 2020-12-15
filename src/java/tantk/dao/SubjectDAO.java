@@ -5,6 +5,7 @@
  */
 package tantk.dao;
 
+import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -17,7 +18,7 @@ import tantk.utils.DBUtils;
  *
  * @author Admin
  */
-public class SubjectDAO {
+public class SubjectDAO implements Serializable{
 
     public SubjectDAO() {
     }
