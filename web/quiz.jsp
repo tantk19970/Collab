@@ -1,5 +1,5 @@
 <%-- Document : quiz Created on : Dec 14, 2020, 10:44:36 PM Author : Nike --%>
-
+<%@taglib prefix="s" uri="/struts-tags" %>
     <%@page contentType="text/html" pageEncoding="UTF-8" %>
         <!DOCTYPE html>
         <html>
@@ -18,6 +18,7 @@
         </head>
 
         <body>
+            <s:hidden name="peId" value="%{practicalExamId}"/>
             <nav class="navbar navbar-light shadow-sm" style="background: #4ba89c;height: 5rem">
                 <div class="container-fluid d-flex justify-content-center">
                     <a class="navbar-brand text-white" href="#">Daga Kotowaru</a>

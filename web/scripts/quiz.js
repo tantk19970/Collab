@@ -90,7 +90,7 @@ new Vue({
         }
     },
     created() {
-        const url = "http://localhost:8084/Assignment_PRJ321_3W_2/GetPEDetailsAction.action";
+        const url = "http://localhost:8084/Assignment_PRJ321_3W_2/GetPEDetailsAction.action?peId=8";
         // var vm = 
         fetch(url).then(res => res.json()).then(data => {
             // data.questions.map(aQuestion => {
