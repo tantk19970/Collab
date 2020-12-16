@@ -86,10 +86,10 @@ new Vue({
                     //                    location.reload();
                 }
             },
-            immediate: true
+            immediate: false
         }
     },
-    mounted() {
+    created() {
         const url = "http://localhost:8084/Assignment_PRJ321_3W_2/GetPEDetailsAction.action";
         // var vm = 
         fetch(url).then(res => res.json()).then(data => {

@@ -36,7 +36,7 @@
                         </h5>
                         <div class="container d-flex justify-content-center flex-wrap">
                             <div v-for="(item,index) in quizQ">
-                                <a type="button" class="btn btn-outline-success jump-to-button" :href="'#q'+item.id">{{item.id}}</a>
+                                <a type="button" class="btn btn-outline-success jump-to-button" :href="'#q'+item.questionId">{{item.questionId}}</a>
                             </div>
                         </div>
                     </div>
