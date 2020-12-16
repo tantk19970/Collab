@@ -20,7 +20,7 @@
     <body>
         <nav class="navbar navbar-light shadow-sm" style="background: #4ba89c;height: 5rem">
             <div class="container-fluid d-flex justify-content-center">
-                <a class="navbar-brand text-white" href="#">Dio BRANDO</a>
+                <a class="navbar-brand text-white" href="#">Daga Kotowaru</a>
             </div>
         </nav>
         <nav class="navbar navbar-light shadow-sm mb-2" style="background: #20897b;height: 2rem"></nav>
@@ -44,22 +44,16 @@
                 <div class="col-md-9" id="quizQuestion"> 
                     <div class="row"  v-for="(item,index) in quizQ" v-bind:key="index">
                         <div class="card col-md-2 p-3 d-inline-block mx-1" style="max-height: 7rem;max-width: 10rem; background: #eeeeee">
-                            Question <span class="fs-4 fw-bold">{{item.id}}</span>
+                            Question <span class="fs-4 fw-bold">{{item.questionId}}</span>
                         </div>
                         <div class="card p-3 rounded-3 col-md-10 mb-4" :id="'q'+item.id" style="background: #d9edf7">
                             <h6 class="card-text" id="countdown">
-                                {{item.desc}}
+                                {{item.questionContent}}
                             </h6>
-                            <div class="form-check">
+                            <div class="form-check" v-for="(anAnswer,index2) in item.answers" v-bind:key="index2">
                                 <input class="form-check-input" type="radio" :name="'quizAnswerNo'+item.id">
                                 <label class="form-check-label" for="flexRadioDefault1">
-                                    Answer 1
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" :name="'quizAnswerNo'+item.id">
-                                <label class="form-check-label" for="flexRadioDefault2">
-                                    Answer 2
+                                    {{anAnswer.answerContent}}
                                 </label>
                             </div>
                         </div>

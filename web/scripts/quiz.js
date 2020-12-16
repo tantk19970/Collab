@@ -7,65 +7,49 @@
 new Vue({
     el: "#quizSection",
     data() {
-        return{
+        return {
             duration: 10000,
             quizQ: [
                 {
                     id: 1,
                     name: "Tại sao lại nhiều Action?",
                     desc: "Kẻ thù nguy hại trước mắt của các mạng Đông Dương được xác định trong Chủ trương và nhận thức mới của Đảng giai đoạn 1936 - 1939 là:",
+                    answers: [],
                 },
                 {
                     id: 2,
                     name: "Struts là cmg?",
                     desc: "Xúc tiến chuẩn bị cho khởi nghĩa vũ trang là nhiệm vụ trung tâm là nội dung được nêu ra tại:",
+                    answers: [],
                 },
                 {
                     id: 3,
-                    name: "Stay as Chó?",
+                    name: "Name là cmg?",
                     desc: "Giai cấp nào ra đời gắn với các cuộc khai thác thuộc địa của thực dân Pháp?",
+                    answers: [],
                 },
                 {
                     id: 4,
                     name: "Stay as Chó?",
                     desc: "Giai cấp nào ra đời gắn với các cuộc khai thác thuộc địa của thực dân Pháp?",
+                    answers: [],
                 },
                 {
                     id: 5,
-                    name: "Stay as Chó?",
+                    name: "Stay as Chó? Daga Kotowaru.",
                     desc: "Giai cấp nào ra đời gắn với các cuộc khai thác thuộc địa của thực dân Pháp?",
+                    answers: [],
                 },
-                {
-                    id: 6,
-                    name: "Stay as Chó?",
-                    desc: "Giai cấp nào ra đời gắn với các cuộc khai thác thuộc địa của thực dân Pháp?",
-                },
-                {
-                    id: 7,
-                    name: "Stay as Chó?",
-                    desc: "Giai cấp nào ra đời gắn với các cuộc khai thác thuộc địa của thực dân Pháp?",
-                },
-                {
-                    id: 8,
-                    name: "Stay as Chó?",
-                    desc: "Giai cấp nào ra đời gắn với các cuộc khai thác thuộc địa của thực dân Pháp?",
-                },
-                {
-                    id: 9,
-                    name: "Stay as Chó?",
-                    desc: "Giai cấp nào ra đời gắn với các cuộc khai thác thuộc địa của thực dân Pháp?",
-                },
-                {
-                    id: 10,
-                    name: "Stay as Chó?",
-                    desc: "Giai cấp nào ra đời gắn với các cuộc khai thác thuộc địa của thực dân Pháp?",
-                }
             ]
         }
     },
+    methods: {
+        loadPEDetail: function(event) {
+            
+        }
+    },
     filters: {
-        changeTimeFormat(duration)
-        {
+        changeTimeFormat(duration) {
             // Minutes and seconds
             var mins = ~~((duration % 3600) / 60);
             var secs = ~~duration % 60;
@@ -99,10 +83,23 @@ new Vue({
                     }, 1000);
                 }
                 if (value == 0) {
-//                    location.reload();
+                    //                    location.reload();
                 }
             },
             immediate: true
         }
+    },
+    mounted() {
+        const url = "http://localhost:8084/Assignment_PRJ321_3W_2/GetPEDetailsAction.action";
+        // var vm = 
+        fetch(url).then(res => res.json()).then(data => {
+            // data.questions.map(aQuestion => {
+            //     this.quizQ.desc = aQuestion.questionContent;
+            //     this.quizQ.answers = aQuestion.answers;
+            //     console.log(data);
+            // });
+            this.quizQ = data.questions;
+            this.duration = data.duration;
+        });
     }
 });
