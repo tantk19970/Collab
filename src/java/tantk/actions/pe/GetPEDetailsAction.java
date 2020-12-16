@@ -5,12 +5,9 @@
  */
 package tantk.actions.pe;
 
-import com.google.gson.Gson;
 import com.opensymphony.xwork2.Action;
-import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import java.util.List;
-import java.util.Map;
 import tantk.dao.PracticalExamDAO;
 import tantk.dao.quiz.QuizAnswerDAO;
 import tantk.dao.quiz.QuizQuestionDAO;
@@ -51,7 +48,10 @@ public class GetPEDetailsAction extends ActionSupport {
         PracticalExamDAO peDAO = new PracticalExamDAO();
         //get PE Detail
 //        PracticalExamDTO dto = peDAO.getPracticalExamDetail(peId);
-        peId = 8;
+//        peId = 8;
+        if (peId == null || peId < 0) {
+            return FAIL;
+        }
         PracticalExamDTO dto = peDAO.getPracticalExamDetail(peId);
         if (dto == null) {
             return FAIL;

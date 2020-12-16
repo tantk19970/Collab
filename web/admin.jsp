@@ -59,8 +59,8 @@
         </s:form>
         
         <s:form action="GoToQuizPage">
-            <s:hidden name="shopType" value="shopSub"/>
-            <s:submit value="Test Subject" label="Test Subject"/>
+            <s:textfield name="practicalExamId" label="Practical Exam Id"/>
+            <s:submit value="Get PE Data and Questions" label="testSubject"/>
         </s:form>
         
         

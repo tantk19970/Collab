@@ -30,6 +30,7 @@
             <result name="success">admin.jsp</result>
         </action>
         <action name="GoToQuizPage">
+            <param name="peId">${practicalExamId}</param>
             <result>quiz.jsp</result>
         </action>
         <action name="GetPEDetailsAction" class="tantk.actions.pe.GetPEDetailsAction">

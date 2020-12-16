@@ -12,11 +12,20 @@ import java.io.Serializable;
  * @author Pro
  */
 public class QuizAnswerDTO implements Serializable {
+
     private Integer answerId;
     private String answerContent;
     private Boolean correct;
+    private Boolean studentChecked;
 
     public QuizAnswerDTO() {
+    }
+
+    public QuizAnswerDTO(Integer answerId, String answerContent, Boolean correct, Boolean studentChecked) {
+        this.answerId = answerId;
+        this.answerContent = answerContent;
+        this.correct = correct;
+        this.studentChecked = studentChecked;
     }
 
     public QuizAnswerDTO(Integer id, String answerContent, Boolean correct) {
@@ -48,6 +57,13 @@ public class QuizAnswerDTO implements Serializable {
     public void setCorrect(Boolean correct) {
         this.correct = correct;
     }
-    
-    
+
+    public Boolean getStudentChecked() {
+        return studentChecked;
+    }
+
+    public void setStudentChecked(Boolean studentChecked) {
+        this.studentChecked = studentChecked;
+    }
+
 }
