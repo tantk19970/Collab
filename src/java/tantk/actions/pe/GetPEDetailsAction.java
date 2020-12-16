@@ -6,6 +6,7 @@
 package tantk.actions.pe;
 
 import com.google.gson.Gson;
+import com.opensymphony.xwork2.Action;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import java.util.List;
@@ -24,7 +25,6 @@ public class GetPEDetailsAction extends ActionSupport {
 
     private Integer peId;
     private PracticalExamDTO peDetail;
-    private String jsonResult;
     private static final String SUCCESS = "success";
     private static final String FAIL = "fail";
 
@@ -46,16 +46,6 @@ public class GetPEDetailsAction extends ActionSupport {
     public void setPeDetail(PracticalExamDTO peDetail) {
         this.peDetail = peDetail;
     }
-
-    public String getJsonResult() {
-        return jsonResult;
-    }
-
-    public void setJsonResult(String jsonResult) {
-        this.jsonResult = jsonResult;
-    }
-
-    
 
     public String execute() throws Exception {
         PracticalExamDAO peDAO = new PracticalExamDAO();
@@ -81,12 +71,14 @@ public class GetPEDetailsAction extends ActionSupport {
             aQuestion.setAnswers(answerDAO.getQuizAnswers());
         }
         dto.setQuestions(questions);
-        Map session = ActionContext.getContext().getSession();
-        Gson gson = new Gson();
-        jsonResult = gson.toJson(dto);
-        session.put("PEDETAILJSON", jsonResult);
-        session.put("PEDETAIL", dto);
-        return SUCCESS;
+        peDetail = dto;
+        //this step is not needed anymore
+//        Gson gson = new Gson();
+////        jsonResult = gson.toJson(dto);
+
+        //using ajax, no need to use session
+//        session.put("PEDETAIL", dto);
+        return Action.SUCCESS;
     }
 
 }

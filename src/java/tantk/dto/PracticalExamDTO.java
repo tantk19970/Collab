@@ -40,8 +40,8 @@ public class PracticalExamDTO implements Serializable{
     }
     
     //construct list of PE (do not get answer)
-
-    public PracticalExamDTO(String peName, String peType, Integer subjectId, Integer duration) {
+    public PracticalExamDTO(Integer peId, String peName, String peType, Integer subjectId, Integer duration) {
+        this.peId = peId;
         this.peName = peName;
         this.peType = peType;
         this.subjectId = subjectId;

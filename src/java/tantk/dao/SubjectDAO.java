@@ -30,7 +30,7 @@ public class SubjectDAO implements Serializable{
     }
 
     public void getSubject(Integer majorId) throws Exception {
-        String sql = "SELECT subjectName FROM Subject WHERE majorId = ?";
+        String sql = "SELECT id, subjectName FROM Subject WHERE majorId = ?";
         try (Connection conn = DBUtils.getConnection();
                 PreparedStatement stm = conn.prepareStatement(sql)) {
             stm.setInt(1, majorId);
@@ -39,7 +39,7 @@ public class SubjectDAO implements Serializable{
                     if (listSubjects == null) {
                         listSubjects = new ArrayList<>();
                     }
-                    listSubjects.add(new SubjectDTO(null, rs.getString("subjectName")));
+                    listSubjects.add(new SubjectDTO(rs.getInt("id"), rs.getString("subjectName")));
                 }
             }
         }

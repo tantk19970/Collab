@@ -30,7 +30,7 @@ public class PracticalExamDAO implements Serializable {
     }
 
     public void getPracticalExamFromSubjectId(Integer subjectId) throws Exception {
-        String sql = "Select peName, duration, peType From pe Where subjectId = ?";
+        String sql = "Select id, peName, duration, peType From pe Where subjectId = ?";
         try (Connection conn = DBUtils.getConnection();
                 PreparedStatement stm = conn.prepareStatement(sql)) {
             stm.setInt(1, subjectId);
@@ -39,11 +39,12 @@ public class PracticalExamDAO implements Serializable {
                     if (listPEs == null) {
                         listPEs = new ArrayList<>();
                     }
+                    Integer peId = rs.getInt("id");
                     String peName = rs.getString("peName");
                     String peType = rs.getString("peType");
                     Integer duration = rs.getInt("duration");
 
-                    PracticalExamDTO dto = new PracticalExamDTO(peName, peType, subjectId, duration);
+                    PracticalExamDTO dto = new PracticalExamDTO(peId, peName, peType, subjectId, duration);
                     listPEs.add(dto);
                 }
             }
@@ -51,7 +52,7 @@ public class PracticalExamDAO implements Serializable {
     }
 
     public PracticalExamDTO getPracticalExamDetail(Integer peId) throws Exception {
-        String sql = "Select peName, duration, peType, subjectId From pe Where id = ?";
+        String sql = "Select id, peName, duration, peType, subjectId From pe Where id = ?";
         Connection conn = null;
         PreparedStatement stm = null;
         ResultSet rs = null;
@@ -70,7 +71,7 @@ public class PracticalExamDAO implements Serializable {
                 Integer duration = rs.getInt("duration");
                 Integer subjectId = rs.getInt("subjectId");
 
-                PracticalExamDTO dto = new PracticalExamDTO(peName, peType, subjectId, duration);
+                PracticalExamDTO dto = new PracticalExamDTO(peId, peName, peType, subjectId, duration);
                 return dto;
             }
         } finally {

@@ -47,7 +47,7 @@ public class QuizQuestionDAO implements Serializable{
     }
     
     public void getQuestionsWithoutIdFromPEId(Integer peId) throws Exception{
-        String sql="SELECT questionContent, score FROM QuizQuestion WHERE peId = ?";
+        String sql="SELECT id, questionContent, score FROM QuizQuestion WHERE peId = ?";
         try(Connection conn=DBUtils.getConnection();
                 PreparedStatement stm=conn.prepareStatement(sql)){
             stm.setInt(1, peId);
@@ -56,7 +56,7 @@ public class QuizQuestionDAO implements Serializable{
                     if (quizQuestions == null) {
                         quizQuestions = new ArrayList<>();
                     }
-                    QuizQuestionDTO dto = new QuizQuestionDTO(null, rs.getString("questionContent"), rs.getInt("score"), null);
+                    QuizQuestionDTO dto = new QuizQuestionDTO(rs.getInt("id"), rs.getString("questionContent"), rs.getInt("score"), null);
                     quizQuestions.add(dto);
                 }
             }

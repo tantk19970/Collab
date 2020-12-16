@@ -4,7 +4,13 @@
 
 <struts>
     <!-- Configuration for the default package. -->
+    
     <package name="default" extends="struts-default">
+        <result-types>
+             <!-- Uses this, so root must point to the dto for serialization. -->
+              <!-- No need to manually serialize in action using gson -->
+            <result-type name="json" class="org.apache.struts2.json.JSONResult"/>
+        </result-types>
         <action name="LoginAction" class="tantk.actions.LoginAction" >
             <result name="error">error.jsp</result>
             <result name="admin">admin.jsp</result>
@@ -24,7 +30,10 @@
             <result name="success">admin.jsp</result>
         </action>
         <action name="GetPEDetailsAction" class="tantk.actions.pe.GetPEDetailsAction">
-            <result name="success">testPE.jsp</result>
+            <result type="json" name="success">
+                <!-- root must point to the dto -->
+                <param name="root">peDetail</param>
+            </result>
         </action>
     </package>
 </struts>

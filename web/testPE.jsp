@@ -12,14 +12,14 @@
         <title>Student Page</title>
     </head>
     <body>
-        <h1>Hello <s:property value="%{peDetail.peName}"/></h1>
-        <p><s:property value="{peDetail.peType}"/></p>
-        <p><s:property value="{peDetail.duration}"/></p>
+        <!-- <h1>Test name: <s:property value="%{peDetail.peName}"/></h1>
+        <p>Type: <s:property value="%{peDetail.peType}"/></p>
+        <p>Duration: <s:property value="%{peDetail.duration}"/></p>
         <s:iterator value="%{peDetail.questions}" status="counter">
             <p><s:property value="questionContent" /></p>
             <s:iterator value="%{answers}">
-                <p><s:property value="{answerContent}"/></p>
+                <p><s:property value="%{answerContent}"/></p>
             </s:iterator>
-        </s:iterator>
+        </s:iterator> -->
     </body>
 </html>

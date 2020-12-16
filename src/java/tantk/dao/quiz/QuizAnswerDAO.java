@@ -31,7 +31,7 @@ public class QuizAnswerDAO implements Serializable{
     }
     
     public void getQuestionsFromPEId(Integer questionId) throws Exception{
-        String sql="SELECT answerContent FROM QuizAnswer WHERE questionId = ?";
+        String sql="SELECT id, answerContent FROM QuizAnswer WHERE questionId = ?";
         try(Connection conn=DBUtils.getConnection();
                 PreparedStatement stm=conn.prepareStatement(sql)){
             stm.setInt(1, questionId);
@@ -42,6 +42,7 @@ public class QuizAnswerDAO implements Serializable{
 //                        quizAnswers = new ArrayList<>();
 //                    }
                     QuizAnswerDTO dto = new QuizAnswerDTO();
+                    dto.setAnswerId(rs.getInt("id"));
                     dto.setAnswerContent(rs.getString("answerContent"));
                     quizAnswers.add(dto);
                 }
