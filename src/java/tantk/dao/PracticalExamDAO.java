@@ -51,7 +51,7 @@ public class PracticalExamDAO implements Serializable {
     }
 
     public PracticalExamDTO getPracticalExamDetail(Integer peId) throws Exception {
-        String sql = "Select peName, duration, peType, subjectId From pe Where peId = ?";
+        String sql = "Select peName, duration, peType, subjectId From pe Where id = ?";
         Connection conn = null;
         PreparedStatement stm = null;
         ResultSet rs = null;

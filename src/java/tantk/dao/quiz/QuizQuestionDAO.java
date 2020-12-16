@@ -30,6 +30,23 @@ public class QuizQuestionDAO implements Serializable{
     }
     
     public void getQuestionsFromPEId(Integer peId) throws Exception{
+        String sql="SELECT id, questionContent, score FROM QuizQuestion WHERE peId = ?";
+        try(Connection conn=DBUtils.getConnection();
+                PreparedStatement stm=conn.prepareStatement(sql)){
+            stm.setInt(1, peId);
+            try(ResultSet rs= stm.executeQuery()){
+                while(rs.next()){
+                    if (quizQuestions == null) {
+                        quizQuestions = new ArrayList<>();
+                    }
+                    QuizQuestionDTO dto = new QuizQuestionDTO(rs.getInt("id"), rs.getString("questionContent"), rs.getInt("score"), null);
+                    quizQuestions.add(dto);
+                }
+            }
+        }
+    }
+    
+    public void getQuestionsWithoutIdFromPEId(Integer peId) throws Exception{
         String sql="SELECT questionContent, score FROM QuizQuestion WHERE peId = ?";
         try(Connection conn=DBUtils.getConnection();
                 PreparedStatement stm=conn.prepareStatement(sql)){
@@ -45,5 +62,4 @@ public class QuizQuestionDAO implements Serializable{
             }
         }
     }
-    
 }

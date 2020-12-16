@@ -58,7 +58,10 @@
             <s:submit value="addLesson" label="Add lesson :"/>
         </s:form>
         
-        
+        <s:form action="GetPEDetailsAction">
+            <s:hidden name="shopType" value="shopSub"/>
+            <s:submit value="Test Subject" label="Test Subject"/>
+        </s:form>
         
         
     </body>

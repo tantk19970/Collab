@@ -5,8 +5,11 @@
  */
 package tantk.actions.pe;
 
+import com.google.gson.Gson;
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import java.util.List;
+import java.util.Map;
 import tantk.dao.PracticalExamDAO;
 import tantk.dao.quiz.QuizAnswerDAO;
 import tantk.dao.quiz.QuizQuestionDAO;
@@ -20,8 +23,9 @@ import tantk.dto.QuizQuestionDTO;
 public class GetPEDetailsAction extends ActionSupport {
 
     private Integer peId;
-    private List<PracticalExamDTO> listPEs;
-    private static final String SUCCESS = "succss";
+    private PracticalExamDTO peDetail;
+    private String jsonResult;
+    private static final String SUCCESS = "success";
     private static final String FAIL = "fail";
 
     public GetPEDetailsAction() {
@@ -35,17 +39,29 @@ public class GetPEDetailsAction extends ActionSupport {
         this.peId = peId;
     }
 
-    public List<PracticalExamDTO> getListPEs() {
-        return listPEs;
+    public PracticalExamDTO getPeDetail() {
+        return peDetail;
     }
 
-    public void setListPEs(List<PracticalExamDTO> listPEs) {
-        this.listPEs = listPEs;
+    public void setPeDetail(PracticalExamDTO peDetail) {
+        this.peDetail = peDetail;
     }
+
+    public String getJsonResult() {
+        return jsonResult;
+    }
+
+    public void setJsonResult(String jsonResult) {
+        this.jsonResult = jsonResult;
+    }
+
+    
 
     public String execute() throws Exception {
         PracticalExamDAO peDAO = new PracticalExamDAO();
         //get PE Detail
+//        PracticalExamDTO dto = peDAO.getPracticalExamDetail(peId);
+        peId = 8;
         PracticalExamDTO dto = peDAO.getPracticalExamDetail(peId);
         if (dto == null) {
             return FAIL;
@@ -65,6 +81,11 @@ public class GetPEDetailsAction extends ActionSupport {
             aQuestion.setAnswers(answerDAO.getQuizAnswers());
         }
         dto.setQuestions(questions);
+        Map session = ActionContext.getContext().getSession();
+        Gson gson = new Gson();
+        jsonResult = gson.toJson(dto);
+        session.put("PEDETAILJSON", jsonResult);
+        session.put("PEDETAIL", dto);
         return SUCCESS;
     }
 

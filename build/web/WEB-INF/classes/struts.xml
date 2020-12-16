@@ -20,9 +20,11 @@
         <action name="GetAllSubjectAction" class="tantk.actions.subject.GetAllSubjectAction">
             <result name="success">admin.jsp</result>
         </action>
-        
         <action name="GetPEAction" class="tantk.actions.pe.GetPEAction">
             <result name="success">admin.jsp</result>
+        </action>
+        <action name="GetPEDetailsAction" class="tantk.actions.pe.GetPEDetailsAction">
+            <result name="success">testPE.jsp</result>
         </action>
     </package>
 </struts>
