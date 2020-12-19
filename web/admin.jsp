@@ -29,7 +29,6 @@
                         <th>Major</th>
                         <th>Year</th>
                         <th>Delete</th>
-                        <th>Update</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -41,8 +40,12 @@
                         <td><s:property value="%{role}"/></td>
                         <td><s:property value="%{major}"/></td>
                         <td><s:property value="%{year}"/></td>
-                        <td>Delete</td>
-                        <td>Update</td>
+                        <td><s:form action="DeleteAction">
+                                <s:hidden name="productID" value="%{username}"/>
+                                <s:hidden name="lastSearchValue" value="%{searchValue}"/>
+                                <s:hidden name="lastSub" value="admin"/>
+                                <s:submit value="Delete"/>
+                        </s:form></td>
                     </tr>
                     </s:iterator>
                 </tbody>
@@ -51,17 +54,14 @@
         </s:if>
         <s:form action="FirstShopAction">
             <s:hidden name="shopType" value="shopSub"/>
-            <s:submit value="addSub" label="Add subject :"/>
+            <s:submit value="Add Lession" />
         </s:form>
         <s:form action="FirstShopAction">
             <s:hidden name="shopType" value="shopLes"/>
-            <s:submit value="addLesson" label="Add lesson :"/>
+            <s:submit value="Add Qúetion" />
         </s:form>
         
-        <s:form action="GoToQuizPage">
-            <s:textfield name="practicalExamId" label="Practical Exam Id"/>
-            <s:submit value="Get PE Data and Questions" label="testSubject"/>
-        </s:form>
+        
         
         
     </body>

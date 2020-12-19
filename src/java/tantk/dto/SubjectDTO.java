@@ -12,44 +12,67 @@ import java.io.Serializable;
  * @author Admin
  */
 public class SubjectDTO implements Serializable{
-    private Integer subjectId;
-    private String subjectName;
+    private String subID,subName,mayorID,mayorName,shopType;
+//    "Select \n" +
+//"From tbl_Subject s,tbl_Major m where s.MajorID=m.MajorID"
 
     public SubjectDTO() {
     }
 
-    public SubjectDTO(Integer subjectId, String subjectName) {
-        this.subjectId = subjectId;
-        this.subjectName = subjectName;
+    public SubjectDTO(String subID, String subName, String shopType) {
+        this.subID = subID;
+        this.subName = subName;
+        this.shopType = shopType;
+    }
+    
+
+    public SubjectDTO(String subID, String subName) {
+        this.subID = subID;
+        this.subName = subName;
     }
 
-    /**
-     * @return the subjectId
-     */
-    public Integer getSubjectId() {
-        return subjectId;
+    public String getShopType() {
+        return shopType;
     }
 
-    /**
-     * @param subjectId the subjectId to set
-     */
-    public void setSubjectId(Integer subjectId) {
-        this.subjectId = subjectId;
+    public void setShopType(String shopType) {
+        this.shopType = shopType;
+    }
+    
+    
+    
+    public String getSubID() {
+        return subID;
     }
 
-    /**
-     * @return the subjectName
-     */
-    public String getSubjectName() {
-        return subjectName;
+    public void setSubID(String subID) {
+        this.subID = subID;
     }
 
-    /**
-     * @param subjectName the subjectName to set
-     */
-    public void setSubjectName(String subjectName) {
-        this.subjectName = subjectName;
+    public String getSubName() {
+        return subName;
     }
+
+    public void setSubName(String subName) {
+        this.subName = subName;
+    }
+
+    public String getMayorID() {
+        return mayorID;
+    }
+
+    public void setMayorID(String mayorID) {
+        this.mayorID = mayorID;
+    }
+
+    public String getMayorName() {
+        return mayorName;
+    }
+
+    public void setMayorName(String mayorName) {
+        this.mayorName = mayorName;
+    }
+    
     
     
 }

@@ -9,15 +9,43 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Shopping Page</title>
+        <title>Edit Page</title>
     </head>
     <body>
-        <h1>Shopping Cart!</h1>
-        <s:iterator value="%{listCate}">
-            <s:if test="%{listCate!=null">
+        <h1>Choose action!</h1>
+        <%--<s:iterator value="%{listCate}">--%>
+            <s:if test="%{listCate != null}">
+                <table border="1">
+                    <thead>
+                        <tr>
+                            <th>NO</th>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Delete</th>
+                            <th>Add</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <s:iterator value="%{listCate}" status="counter">
+                        <tr>
+                            <td><s:property value="%{#counter.count}"/></td>
+                            <td><s:property value="%{proID}"/></td>
+                            <td><s:property value="%{proName}"/></td>
+                            <td>Delete</td>
+                            <td><s:form action="LoadAction">
+                                    <s:hidden name="txtProID" value="%{proID}"/>
+                                    <s:hidden name="shopType" value="%{shopType}"/>
+                                    <s:submit value="Add"/>
+                            </s:form></td>
+                        </tr>
+                        </s:iterator>
+                    </tbody>
+                </table>
+
+                
                 
             </s:if>
-        </s:iterator>
+        <%--</s:iterator>--%>
         
     </body>
 </html>

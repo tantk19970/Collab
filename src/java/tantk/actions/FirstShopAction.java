@@ -5,81 +5,60 @@
  */
 package tantk.actions;
 
-import java.io.IOException;
-import java.io.PrintWriter;
+import com.opensymphony.xwork2.ActionContext;
+import com.opensymphony.xwork2.ActionSupport;
+import java.util.List;
+import java.util.Map;
 import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import org.apache.struts2.ServletActionContext;
+import tantk.dao.CategoryDAO;
+import tantk.dao.ProductDAO;
+import tantk.dto.LessionDTO;
+import tantk.dto.ProductDTO;
+import tantk.dto.SubjectDTO;
 
 /**
  *
  * @author Admin
  */
-public class FirstShopAction extends HttpServlet{
-    private String type;
+public class FirstShopAction extends ActionSupport {
+    private String shopType;
+    private List<ProductDTO> listCate;
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            String shopping;
-            ServletContext context=getServletContext();
-            type= request.getParameter("shopType");
-//            if(type.equals("shopSub"){
-//                
-//            }
-            
+    public String getShopType() {
+        return shopType;
+    }
+
+    public void setShopType(String shopType) {
+        this.shopType = shopType;
+    }
+
+    public List<ProductDTO> getListCate() {
+        return listCate;
+    }
+
+    public void setListCate(List<ProductDTO> listCate) {
+        this.listCate = listCate;
+    }
+    
+    
+    
+    
+    public FirstShopAction() {
+    }
+    
+    public String execute() throws Exception {
+//        ServletContext context= ServletActionContext.getServletContext();
+        CategoryDAO dao= new CategoryDAO();
+        Map session=ActionContext.getContext().getSession();
+        if(shopType.equals("shopSub")){
+            listCate= dao.getAllSubject();
+            session.put("SHOP", "Subject");
+        }else if(shopType.equals("shopLes")){
+            listCate=dao.getAllLession();
+            session.put("SHOP", "Lession");
         }
+        return "success1";
     }
-
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
-    }
-
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
-    }
-
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
-
+    
 }

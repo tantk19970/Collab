@@ -1,7 +1,2 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Context path="/Assignment_PRJ321_3W_2">
-    <Resource name="Assignment_PRJ321_3W_2" type="javax.sql.DataSource" auth="Container"
-    driverClassName="com.microsoft.sqlserver.jdbc.SQLServerDriver"
-    url="jdbc:sqlserver://localhost:1433;databaseName=Collab"
-    username="sa" password="Thonglypatra1998"/>
-</Context>
+<Context path="/Assignment_PRJ321_3W_2"/>

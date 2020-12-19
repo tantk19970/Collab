@@ -10,6 +10,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.validator.annotations.RequiredStringValidator;
 import com.opensymphony.xwork2.validator.annotations.ValidatorType;
 import java.util.Map;
+import javax.servlet.ServletContext;
 import tantk.dao.RegistrationDAO;
 
 /**
@@ -27,6 +28,7 @@ public class LoginAction extends ActionSupport {
     }
     @RequiredStringValidator(type = ValidatorType.FIELD,
             message = "Username can't be blank!!!")
+
     public void setUsername(String username) {
         this.username = username;
     }
@@ -46,7 +48,6 @@ public class LoginAction extends ActionSupport {
     public LoginAction() {
     }
     
-    @Override
     public String execute() throws Exception {
         String url = ERROR;
         RegistrationDAO dao = new RegistrationDAO();
@@ -58,7 +59,7 @@ public class LoginAction extends ActionSupport {
             session.put("USER",username);
             if (role.equals("admin")) {
                 url = ADMIN;
-            } else if (role.equals("student")) {
+            } else if (role.equals("user")) {
                 url = USER;
             } else {
                 session.put("ERROR", "Invalid Role");
